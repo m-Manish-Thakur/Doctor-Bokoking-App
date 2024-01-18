@@ -3,9 +3,90 @@
   padding: 0;
   box-sizing: border-box;
   transition: 0.2s linear;
+  font-family: "poppins";
 }
 body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+}
+#App {
+  padding: 10px 15px;
+  display: flex;
+}
+/* #################   Header  ############# */
+header {
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: rgb(255, 255, 255);
+  justify-content: space-between;
+}
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+header nav a {
+  padding: 3px 12px;
+}
+
+/* ##############   Sidebar  ##############3 */
+#sidebar {
+  flex-basis: 15%;
+  height: calc(100vh - 30px);
+  background-color: rgb(21, 118, 78);
+  color: aliceblue;
+  border-radius: 10px;
+  padding: 15px;
+}
+#sidebar h2 {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+#sidebar nav {
+  padding: 100px 10px 0 0px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+#sidebar nav a {
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+#sidebar nav a:hover {
+  background-color: rgb(17, 94, 62);
+}
+#sidebar nav a.active {
+  background-color: rgb(17, 94, 62);
+}
+#sidebar nav a span {
+  font-weight: 400;
+}
+/* ##############   Body  ################# */
+#body {
+  flex-basis: 85%;
+  margin-left: 15px;
+  height: 100%;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 10px;
+}
+#bodyContainer {
+  margin-top: 20px;
+  height: 100%;
+  padding: 10px;
+}
+#bodyContainer h3 {
+  font-weight: 600;
+  font-size: 22px;
 }

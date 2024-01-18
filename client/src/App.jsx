@@ -1,14 +1,16 @@
 import React from "react";
+import { ChakraProvider } from "@chakra-ui/react";
+import Sidebar from "./Components/Sidebar";
+import Body from "./Components/Body";
 
-import Button from "@mui/material/Button";
 const App = () => {
   return (
-    <div>
-      <h1>Manish Thakur</h1>
-
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
-    </div>
+    <ChakraProvider>
+      <div id="App">
+        <Sidebar />
+        <Body />
+      </div>
+    </ChakraProvider>
   );
 };
 
