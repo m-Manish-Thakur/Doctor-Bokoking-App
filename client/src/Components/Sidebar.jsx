@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -6,9 +7,9 @@ const Sidebar = () => {
       <h2>Manish</h2>
       <h5>user</h5>
       <nav>
-        <a href="#" className="active">
+        <Link to="/" className="active">
           <span className="material-symbols-outlined">home</span>Home
-        </a>
+        </Link>
         <a href="#">
           <span className="material-symbols-outlined">article</span> Appointments
         </a>

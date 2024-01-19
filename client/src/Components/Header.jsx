@@ -1,18 +1,25 @@
 import React from "react";
 import { Button } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header>
-      <img src="https://wpthemesgrid.com/themes/medikit/img/logo.png" alt="logo" />
+      <Link to="/">
+        <img src="https://wpthemesgrid.com/themes/medikit/img/logo.png" alt="logo" />
+      </Link>
       <nav>
         <Button colorScheme="teal" variant="ghost">
           <span className="material-symbols-outlined">notifications</span>
         </Button>
-        <Button colorScheme="green">Login</Button>
-        <Button colorScheme="green" variant="outline">
-          Register
-        </Button>
+        <Link to="/signin">
+          <Button colorScheme="green">Login</Button>
+        </Link>
+        <Link to="/signup">
+          <Button colorScheme="green" variant="outline">
+            Register
+          </Button>
+        </Link>
       </nav>
     </header>
   );
