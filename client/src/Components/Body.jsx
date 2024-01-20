@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "./Header";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
+import { useDispatch } from "react-redux";
+import { setUser } from "../Utils/userSlice";
 
 const Body = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Retrieve the user from local storage and parse it back to an object
+    const user = JSON.parse(localStorage.getItem("user"));
+    dispatch(setUser(user));
+  }, []);
+
   return (
     <div id="body">
       <Header />
