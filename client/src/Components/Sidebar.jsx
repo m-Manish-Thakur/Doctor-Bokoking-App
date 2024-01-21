@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../Utils/userSlice";
+import { toast } from "react-hot-toast";
 
 const Sidebar = () => {
   const { user } = useSelector((store) => store.user);
@@ -10,6 +11,7 @@ const Sidebar = () => {
   const userLogout = () => {
     localStorage.clear();
     dispatch(clearUser());
+    toast.success("Logout Successful");
   };
 
   return (
