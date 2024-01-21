@@ -5,8 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { SERVER_URL } from "../Utils/Constants";
 import toast from "react-hot-toast";
+import { startLoading, stopLoading } from "../Utils/loadingSlice";
+import { useDispatch } from "react-redux";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const firstname = useRef();
   const lastname = useRef();
@@ -18,6 +22,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(startLoading());
     try {
       const response = await axios.post(
         `${SERVER_URL}/api/user/signup`,
@@ -33,7 +38,8 @@ const SignUp = () => {
           },
         }
       );
-      // console.log(response.data);
+
+      dispatch(stopLoading());
       if (response.data.success) {
         toast.success(response.data.message);
         toast("Redirecting to Login Page");
@@ -43,6 +49,7 @@ const SignUp = () => {
       if (!error.response.data.success) {
         toast.error(error.response.data.message);
       }
+      dispatch(stopLoading());
     }
   };
 

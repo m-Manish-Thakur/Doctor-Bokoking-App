@@ -16,6 +16,19 @@ body {
   padding: 10px 15px;
   display: flex;
 }
+#spinnerContainer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: -10px;
+  z-index: 10;
+  left: 0;
+  background-color: rgba(164, 164, 164, 0.543);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* #################   Header  ############# */
 header {
   padding: 10px;
@@ -103,8 +116,8 @@ header nav a {
 }
 #bodyContainer h1 {
   font-weight: 600;
-  font-size: 4vw;
-  line-height: 5.2vw;
+  font-size: 3.8vw;
+  line-height: 5vw;
 }
 #bodyContainer p {
   font-size: 16px;
@@ -171,4 +184,27 @@ header nav a {
   cursor: pointer;
   color: royalblue;
   text-decoration: underline;
+}
+
+/* ###########################    Doctor Apply Form   ####################### */
+
+#Doctorform {
+  padding: 20px 10px 10px 10px;
+}
+#Doctorform h2 {
+  font-size: 23px;
+  font-weight: 600;
+  color: rgb(62, 62, 62);
+}
+#Doctorform .inputCon {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+#Doctorform Input {
+  background-color: rgb(245, 245, 245);
+  margin-top: 13px;
+  font-size: 17px;
+  width: 47%;
 }

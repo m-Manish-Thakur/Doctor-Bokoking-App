@@ -3,6 +3,7 @@ import Header from "./Header";
 import { Button } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../Utils/userSlice";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -26,9 +27,11 @@ const Body = () => {
             Appointment Today.
           </p>
           <Button colorScheme="green">Book Appointment</Button>
-          <Button colorScheme="green" variant="outline" style={{ marginLeft: "20px" }}>
-            Register
-          </Button>
+          <Link to="/signup">
+            <Button colorScheme="green" variant="outline" style={{ marginLeft: "20px" }}>
+              Register
+            </Button>
+          </Link>
         </div>
         <img
           src="https://img.freepik.com/premium-vector/online-doctor-medical-consultation-vector-illustration_311563-446.jpg"

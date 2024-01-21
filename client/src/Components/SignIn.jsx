@@ -5,8 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { SERVER_URL } from "../Utils/Constants";
 import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUser } from "../Utils/userSlice";
+import { startLoading, stopLoading } from "../Utils/loadingSlice";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(startLoading());
     try {
       const response = await axios.post(
         `${SERVER_URL}/api/user/signin`,
@@ -38,6 +40,7 @@ const SignIn = () => {
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
       dispatch(setUser(response.data.user));
+      dispatch(stopLoading());
       if (response.data.success) {
         toast.success(response.data.message);
         navigate("/");
