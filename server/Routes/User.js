@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../Models/User.Model");
+const Doctor = require("../Models/Doctor.Model");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const { jwtSecretKey } = require("../constants");
@@ -56,6 +57,17 @@ router.post("/signin", async (req, res) => {
     res.status(200).json({ message: "Login Successful", success: true, user, token: token });
   } catch (error) {
     return res.status(500).json({ message: "Error creating user", success: false, error });
+  }
+});
+
+router.post("/apply-for-doctor", async (req, res) => {
+  try {
+    console.log(req.body);
+    const newDoctor = await Doctor.create(req.body);
+    res.status(200).json({ message: "Apply Successful", success: true, newDoctor });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Error applying for doctor", success: false, error });
   }
 });
 

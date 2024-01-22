@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../Utils/userSlice";
 import { toast } from "react-hot-toast";
@@ -8,6 +8,7 @@ import { startLoading, stopLoading } from "../Utils/loadingSlice";
 const Sidebar = () => {
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const userLogout = () => {
     dispatch(startLoading());
@@ -15,6 +16,7 @@ const Sidebar = () => {
     dispatch(clearUser());
     toast.success("Logout Successful");
     dispatch(stopLoading());
+    navigate("/");
   };
 
   return (

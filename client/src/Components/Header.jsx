@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const { user } = useSelector((store) => store.user);
-  console.log(user);
 
   return (
     <header>

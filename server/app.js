@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.json("Welcome to Disney+ Hotstar");
+  res.json("Welcome to Doctor Appointment App");
 });
 
 app.use("/api/user", userRoute);
