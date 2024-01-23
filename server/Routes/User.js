@@ -62,12 +62,33 @@ router.post("/signin", async (req, res) => {
 
 router.post("/apply-for-doctor", async (req, res) => {
   try {
-    console.log(req.body);
     const newDoctor = await Doctor.create(req.body);
-    res.status(200).json({ message: "Apply Successful", success: true, newDoctor });
+    const userAdmin = await User.findOne({ role: "Admin" });
+    const unseenNotifications = userAdmin.unseenNotifications;
+    console.log(unseenNotifications);
+    unseenNotifications.push({
+      type: "New Doctor Apply",
+      message: `${newDoctor.firstname} has applied for a doctor account`,
+      data: {
+        doctorId: newDoctor._id,
+        name: `${newDoctor.firstname} ${newDoctor.lastname}`,
+      },
+      onClickPath: "/admin/doctors",
+    });
+    await User.findByIdAndUpdate(userAdmin._id, { unseenNotifications });
+    res.status(200).json({ message: "Apply Successful", success: true, newDoctor, userAdmin });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ message: "Error applying for doctor", success: false, error });
+    return res.status(500).json({ message: "Error applying for a doctor account", success: false, error });
+  }
+});
+
+router.get("/get-all-doctors", async (req, res) => {
+  try {
+    const doctors = await Doctor.find({});
+    res.status(200).json({ success: true, doctors });
+  } catch (error) {
+    return res.status(500).json({ message: "Error Fetching doctors", success: false, error });
   }
 });
 

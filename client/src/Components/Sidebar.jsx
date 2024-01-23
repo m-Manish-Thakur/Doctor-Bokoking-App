@@ -29,9 +29,9 @@ const Sidebar = () => {
         </Link>
         {user?.role === "Admin" && (
           <>
-            <a href="#">
-              <span className="material-symbols-outlined">clinical_notes</span> Doctor's List
-            </a>
+            <Link to="/admin/doctors">
+              <span className="material-symbols-outlined">clinical_notes</span> Doctors List
+            </Link>
             <a href="#">
               <span className="material-symbols-outlined">account_circle</span> User's List
             </a>

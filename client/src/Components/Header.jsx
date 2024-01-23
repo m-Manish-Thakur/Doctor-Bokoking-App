@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@chakra-ui/react";
+import { Button, Badge } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -12,9 +12,12 @@ const Header = () => {
         <img src="https://wpthemesgrid.com/themes/medikit/img/logo.png" alt="logo" />
       </Link>
       <nav>
-        <Button colorScheme="teal" variant="ghost">
-          <span className="material-symbols-outlined">notifications</span>
-        </Button>
+        <Link to="/notifications">
+          <Button colorScheme="teal" variant="ghost">
+            <span className="material-symbols-outlined">notifications</span>
+            <p className="badge">{user?.unseenNotifications.length}</p>
+          </Button>
+        </Link>
         {!user ? (
           <>
             <Link to="/signin">

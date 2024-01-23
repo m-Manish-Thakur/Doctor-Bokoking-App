@@ -7,6 +7,8 @@ const cors = require("cors");
 
 // Routes
 const userRoute = require("./Routes/User");
+const adminRoute = require("./Routes/Admin");
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -16,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/user", userRoute);
+app.use("api/admin", adminRoute);
 
 // Ports and Database Connect
 
