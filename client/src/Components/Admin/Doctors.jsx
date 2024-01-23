@@ -4,6 +4,7 @@ import { Divider } from "@chakra-ui/react";
 import { Table, Thead, Tbody, Tr, Th, Td, TableContainer, Button } from "@chakra-ui/react";
 import { SERVER_URL } from "../../Utils/Constants";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState(null);
@@ -14,13 +15,28 @@ const Doctors = () => {
 
   const fetchDoctorsList = async () => {
     try {
-      const response = await axios.get(`${SERVER_URL}/api/user/get-all-doctors`);
+      const response = await axios.get(`${SERVER_URL}/api/admin/get-all-doctors`);
       setDoctors(response.data.doctors);
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(doctors);
+
+  const approveDoctor = async (userId) => {
+    try {
+      const response = await axios.post(`${SERVER_URL}/api/admin/approveDoctorApplication/${userId}`);
+      console.log(response.data);
+      setDoctors(response.data.doctors);
+      if (response.data.success) {
+        toast.success(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      if (!error.response.data.success) {
+        toast.error(error.response.data.message);
+      }
+    }
+  };
 
   return (
     <>
@@ -47,12 +63,20 @@ const Doctors = () => {
                     <Tr>
                       <Td>{doctor?.firstname}</Td>
                       <Td>{doctor?.phone}</Td>
-                      <Td>{new Date(doctor?.updatedAt).toISOString().split("T")[0]}</Td>
+                      <Td>{new Date(doctor?.createdAt).toISOString().split("T")[0]}</Td>
                       <Td>{doctor?.status}</Td>
                       <Td>
-                        <Button colorScheme="teal" size="xs" alignItems="center" justifyContent="center">
-                          Approve
-                        </Button>
+                        {doctor?.status === "Pending" ? (
+                          <>
+                            <Button colorScheme="teal" size="xs" onClick={() => approveDoctor(doctor?.userId)}>
+                              Approve
+                            </Button>
+                          </>
+                        ) : (
+                          <Button colorScheme="red" size="xs">
+                            Reject
+                          </Button>
+                        )}
                       </Td>
                     </Tr>
                   ))}

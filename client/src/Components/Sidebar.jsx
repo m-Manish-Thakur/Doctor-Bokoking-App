@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../Utils/userSlice";
 import { toast } from "react-hot-toast";
@@ -24,43 +24,43 @@ const Sidebar = () => {
       <h2>{user?.firstname}</h2>
       <h5>{user?.role}</h5>
       <nav>
-        <Link to="/" className="active">
+        <NavLink to="/" activeClassName="active">
           <span className="material-symbols-outlined">home</span>Home
-        </Link>
+        </NavLink>
         {user?.role === "Admin" && (
           <>
-            <Link to="/admin/doctors">
+            <NavLink to="/admin/doctors" activeClassName="active">
               <span className="material-symbols-outlined">clinical_notes</span> Doctors List
-            </Link>
-            <a href="#">
+            </NavLink>
+            <NavLink activeClassName="active">
               <span className="material-symbols-outlined">account_circle</span> User's List
-            </a>
-            <a href="#" onClick={() => userLogout()}>
+            </NavLink>
+            <NavLink onClick={() => userLogout()}>
               <span className="material-symbols-outlined">logout</span> Logout
-            </a>
+            </NavLink>
           </>
         )}
         {user?.role === "User" && (
           <>
-            <Link to="user/appointments">
+            <NavLink to="user/appointments" activeClassName="active">
               <span className="material-symbols-outlined">article</span> Appointments
-            </Link>
-            <Link to="user/applyDoctor">
+            </NavLink>
+            <NavLink to="user/applyDoctor" activeClassName="active">
               <span className="material-symbols-outlined">clinical_notes</span> Apply Doctor
-            </Link>
-            <a href="#">
+            </NavLink>
+            <NavLink activeClassName="active">
               <span className="material-symbols-outlined">account_circle</span> Account
-            </a>
-            <a href="#" onClick={() => userLogout()}>
+            </NavLink>
+            <NavLink onClick={() => userLogout()}>
               <span className="material-symbols-outlined">logout</span> Logout
-            </a>
+            </NavLink>
           </>
         )}
         {!user && (
           <>
-            <a href="#">
+            <NavLink activeClassName="active">
               <span className="material-symbols-outlined">clinical_notes</span> Doctors
-            </a>
+            </NavLink>
           </>
         )}
       </nav>

@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/user", userRoute);
-app.use("api/admin", adminRoute);
+app.use("/api/admin", adminRoute);
 
 // Ports and Database Connect
 

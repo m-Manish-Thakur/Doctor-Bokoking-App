@@ -101,7 +101,7 @@ header .badge {
 #sidebar nav a:hover {
   background-color: rgb(17, 94, 62);
 }
-#sidebar nav a.active {
+#sidebar nav a .active {
   background-color: rgb(17, 94, 62);
 }
 #sidebar nav a span {

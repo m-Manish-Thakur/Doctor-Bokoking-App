@@ -83,13 +83,4 @@ router.post("/apply-for-doctor", async (req, res) => {
   }
 });
 
-router.get("/get-all-doctors", async (req, res) => {
-  try {
-    const doctors = await Doctor.find({});
-    res.status(200).json({ success: true, doctors });
-  } catch (error) {
-    return res.status(500).json({ message: "Error Fetching doctors", success: false, error });
-  }
-});
-
 module.exports = router;
