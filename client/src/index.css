@@ -267,3 +267,26 @@ header .badge {
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
+
+/* #######################  Doctors List (USER)  ##################### */
+#card h3 {
+  font-size: 18px;
+  text-align: center;
+  font-weight: 600;
+  color: rgb(17, 94, 62);
+}
+#card h3 span {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(62, 62, 62);
+}
+#card p {
+  font-weight: 600;
+  font-size: 18px;
+  color: rgb(46, 46, 46);
+}
+#card h2 {
+  font-weight: 500;
+  color: rgb(86, 86, 86);
+  font-size: 16px;
+}

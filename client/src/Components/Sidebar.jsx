@@ -42,6 +42,9 @@ const Sidebar = () => {
         )}
         {user?.role === "User" && (
           <>
+            <NavLink to="/user/doctors-list" activeClassName="active">
+              <span class="material-symbols-outlined">stethoscope</span> Doctors
+            </NavLink>
             <NavLink to="user/appointments" activeClassName="active">
               <span className="material-symbols-outlined">article</span> Appointments
             </NavLink>

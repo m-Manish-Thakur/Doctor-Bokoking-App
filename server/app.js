@@ -9,6 +9,7 @@ const cors = require("cors");
 const userRoute = require("./Routes/User");
 const adminRoute = require("./Routes/Admin");
 const notificationRoute = require("./Routes/Notifications");
+const doctorRoute = require("./Routes/Doctor");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 app.use("/api/user", userRoute);
 app.use("/api/admin", adminRoute);
 app.use("/api/user", notificationRoute);
+app.use("/api/doctor", doctorRoute);
 
 // Ports and Database Connect
 app.listen(8000, () => {

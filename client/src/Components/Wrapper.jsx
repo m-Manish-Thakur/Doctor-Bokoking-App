@@ -11,6 +11,7 @@ import ApplyDoctor from "./Doctor/ApplyDoctor";
 import { setUser } from "../Utils/userSlice";
 import Notifications from "./Notifications";
 import Doctors from "./Admin/Doctors";
+import DoctorsList from "./User/DoctorsList";
 
 const Wrapper = () => {
   const loading = useSelector((state) => state.loading.isLoading);
@@ -37,6 +38,7 @@ const Wrapper = () => {
           <Route path="/user/applyDoctor" element={<ApplyDoctor />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/admin/doctors" element={<Doctors />} />
+          <Route path="/user/doctors-list" element={<DoctorsList />} />
         </Routes>
       </BrowserRouter>
       <Toaster position="top-center" reverseOrder={false} />
