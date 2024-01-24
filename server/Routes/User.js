@@ -65,7 +65,6 @@ router.post("/apply-for-doctor", async (req, res) => {
     const newDoctor = await Doctor.create(req.body);
     const userAdmin = await User.findOne({ role: "Admin" });
     const unseenNotifications = userAdmin.unseenNotifications;
-    console.log(unseenNotifications);
     unseenNotifications.push({
       type: "New Doctor Apply",
       message: `${newDoctor.firstname} has applied for a doctor account`,

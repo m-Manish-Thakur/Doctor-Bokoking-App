@@ -9,6 +9,19 @@ router.post("/approveDoctorApplication/:userId", async (req, res) => {
   try {
     const updatedUser = await User.findByIdAndUpdate({ _id: userId }, { role: "Doctor" }, { new: true });
     const doctor = await Doctor.findOneAndUpdate({ userId: userId }, { status: "Approved" }, { new: true });
+    const user = await User.findOne({ _id: userId });
+
+    const unseenNotifications = user.unseenNotifications;
+    unseenNotifications.push({
+      type: "Doctor Apply",
+      message: `Your application for doctor account has been approved`,
+      data: {
+        doctor: doctor,
+        name: `${doctor.firstname} ${doctor.lastname}`,
+      },
+      onClickPath: "/doctor/profile",
+    });
+    await User.findByIdAndUpdate(user._id, { unseenNotifications });
     res.status(200).json({ message: "Doctor Approved", success: true, doctor });
   } catch (error) {
     console.log(error);

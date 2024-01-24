@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Badge } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -15,7 +15,7 @@ const Header = () => {
         <Link to="/notifications">
           <Button colorScheme="teal" variant="ghost">
             <span className="material-symbols-outlined">notifications</span>
-            <p className="badge">{user?.unseenNotifications.length}</p>
+            {user && <p className="badge">{user?.unseenNotifications.length}</p>}
           </Button>
         </Link>
         {!user ? (

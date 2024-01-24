@@ -26,7 +26,7 @@ const Doctors = () => {
     try {
       const response = await axios.post(`${SERVER_URL}/api/admin/approveDoctorApplication/${userId}`);
       console.log(response.data);
-      setDoctors(response.data.doctors);
+      fetchDoctorsList();
       if (response.data.success) {
         toast.success(response.data.message);
       }

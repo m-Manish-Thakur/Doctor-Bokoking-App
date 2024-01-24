@@ -8,6 +8,7 @@ const cors = require("cors");
 // Routes
 const userRoute = require("./Routes/User");
 const adminRoute = require("./Routes/Admin");
+const notificationRoute = require("./Routes/Notifications");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,9 +20,9 @@ app.get("/", (req, res) => {
 
 app.use("/api/user", userRoute);
 app.use("/api/admin", adminRoute);
+app.use("/api/user", notificationRoute);
 
 // Ports and Database Connect
-
 app.listen(8000, () => {
   console.log("Server Started");
   mongoose

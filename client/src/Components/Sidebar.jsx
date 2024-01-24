@@ -56,6 +56,20 @@ const Sidebar = () => {
             </NavLink>
           </>
         )}
+        {user?.role === "Doctor" && (
+          <>
+            <NavLink to="doctor/appointments" activeClassName="active">
+              <span className="material-symbols-outlined">article</span> Appointments
+            </NavLink>
+            <NavLink activeClassName="active">
+              <span className="material-symbols-outlined">account_circle</span> Profile
+            </NavLink>
+            <NavLink onClick={() => userLogout()}>
+              <span className="material-symbols-outlined">logout</span> Logout
+            </NavLink>
+          </>
+        )}
+
         {!user && (
           <>
             <NavLink activeClassName="active">
