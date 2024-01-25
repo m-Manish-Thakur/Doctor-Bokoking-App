@@ -1,22 +1,19 @@
 import React from "react";
-import { useNavigate, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../Utils/userSlice";
 import { toast } from "react-hot-toast";
-import { startLoading, stopLoading } from "../Utils/loadingSlice";
 
 const Sidebar = () => {
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const userLogout = () => {
-    dispatch(startLoading());
+    // Redirect to the home page
+    window.location.href = "/";
     localStorage.clear();
     dispatch(clearUser());
     toast.success("Logout Successful");
-    dispatch(stopLoading());
-    navigate("/");
   };
 
   return (
@@ -27,6 +24,16 @@ const Sidebar = () => {
         <NavLink to="/" activeClassName="active">
           <span className="material-symbols-outlined">home</span>Home
         </NavLink>
+        {!user && (
+          <>
+            <NavLink to="/user/doctors-list" activeClassName="active">
+              <span className="material-symbols-outlined">clinical_notes</span> Doctors
+            </NavLink>
+            <NavLink to="user/appointments" activeClassName="active">
+              <span className="material-symbols-outlined">article</span> Appointments
+            </NavLink>
+          </>
+        )}
         {user?.role === "Admin" && (
           <>
             <NavLink to="/admin/doctors" activeClassName="active">
@@ -40,15 +47,16 @@ const Sidebar = () => {
             </NavLink>
           </>
         )}
+
         {user?.role === "User" && (
           <>
             <NavLink to="/user/doctors-list" activeClassName="active">
               <span class="material-symbols-outlined">stethoscope</span> Doctors
             </NavLink>
-            <NavLink to="user/appointments" activeClassName="active">
+            <NavLink to="/user/appointments" activeClassName="active">
               <span className="material-symbols-outlined">article</span> Appointments
             </NavLink>
-            <NavLink to="user/applyDoctor" activeClassName="active">
+            <NavLink to="/user/applyDoctor" activeClassName="active">
               <span className="material-symbols-outlined">clinical_notes</span> Apply Doctor
             </NavLink>
             <NavLink activeClassName="active">
@@ -69,14 +77,6 @@ const Sidebar = () => {
             </NavLink>
             <NavLink onClick={() => userLogout()}>
               <span className="material-symbols-outlined">logout</span> Logout
-            </NavLink>
-          </>
-        )}
-
-        {!user && (
-          <>
-            <NavLink activeClassName="active">
-              <span className="material-symbols-outlined">clinical_notes</span> Doctors
             </NavLink>
           </>
         )}

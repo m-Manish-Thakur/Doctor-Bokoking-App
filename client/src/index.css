@@ -71,7 +71,7 @@ header .badge {
 
 /* ##############   Sidebar  ##############3 */
 #sidebar {
-  flex-basis: 15%;
+  width: 220px;
   height: calc(100vh - 30px);
   background-color: rgb(21, 118, 78);
   color: aliceblue;
@@ -109,7 +109,7 @@ header .badge {
 }
 /* ##############   Body  ################# */
 #body {
-  flex-basis: 85%;
+  width: calc(100vw - 250px);
   margin-left: 15px;
   max-height: calc(100vh - 30px);
   overflow-y: scroll;

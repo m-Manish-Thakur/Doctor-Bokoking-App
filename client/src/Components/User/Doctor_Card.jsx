@@ -26,6 +26,7 @@ const Doctor_Card = ({ doctor }) => {
               </h3>
             </Flex>
           </Stack>
+
           <Button mt="3" variant="solid" colorScheme="green" width={"100%"}>
             Get Appointment
           </Button>

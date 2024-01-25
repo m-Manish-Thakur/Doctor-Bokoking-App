@@ -41,7 +41,7 @@ const Notifications = () => {
   };
 
   return (
-    <div id="body">
+    <div>
       <Header />
       <div id="notifications">
         <h1 id="heading">Notifications</h1>
